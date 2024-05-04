@@ -1,0 +1,26 @@
+.placement-board{
+    margin: 110px 0px 0px 5px;
+}
+
+.card-header {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 40px;
+}
+
+.card-border {
+    background: #fff;
+    border: 1px solid #dedede;
+    box-sizing: border-box;
+    border-radius: 16px !important;
+}
+
+.media {
+    display: flex;
+    align-items: flex-start;
+}
+
+.media-body {
+    flex: 1 1;
+}

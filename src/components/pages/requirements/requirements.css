@@ -1,0 +1,76 @@
+.requirements-section{
+    margin: 100px 0px 0px 0px;
+}
+.input_search{
+    background-repeat: no-repeat;
+    background-position: 3%;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #93a4b7;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 296px;
+    height: 32px;
+    outline: none;
+    padding-left: 28px;
+    padding-right: 12px;
+    color: var(--primary-color-button-links);
+    font-weight: 400;
+    margin-top: 20px;
+}
+.search-input{
+    height: 80px;
+    position: relative;
+    /* // right: 26px; */
+    width: 300px;
+}
+.search-row{
+    background: #f0efff;
+}
+.search-col{
+    display: flex;
+    justify-content: flex-end;
+}
+.search-icon{
+    position: absolute;
+    top: 27px;
+    left: 10px;
+}
+.main-content-requirements{
+    height: 184px;
+    width: 100%;
+    border: 1.5px solid #efefef;
+    border-radius: 16px;
+    padding: 24px;
+    background: #fff;
+    display:flex;
+    flex-direction: row;
+}
+.requirements-section{
+    background: #dbe1e745;
+}
+.main-content:hover{
+    box-shadow: 0 8px 8px rgba(0,0,0,.05);
+}
+.company-detail{
+    flex: 1 0 29%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.company-logo{
+    height: 48px;
+    width: 48px;
+    background-color: #555a8f;
+}
+.company-name h3{
+    font-size: 20px;
+    color: #545454;
+}
+.requirement-detail{
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: gray;
+}

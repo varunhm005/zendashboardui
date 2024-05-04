@@ -1,38 +1,302 @@
-.App {
-  text-align: center;
+html{
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  color: #555a8f !important
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.sidebar-content{
+  height: 88vh;
+  overflow-y: auto;
+}
+.container-custom{
+  width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logoImgStyle{
+  width: 20% !important;
+}
+
+.login-button{
+  background-color: #4b0dba !important;
+  color: white !important;
+}
+
+.loginImage{
+  max-width: 500px;
+  height: 100vh;
+}
+
+.main-menu {
+  background: #fff;
+  border-right: 1px solid #e5e5e5;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  width: 72px;
+  overflow: hidden;
+  transform: translateZ(0) scale(1, 1);
+  transition: width 0.3s ease;
+  -webkit-transform: translateZ(0) scale(1, 1);
+  -webkit-transition: width 0.3s ease;
+  z-index: 1000;
+}
+
+.main-menu > ul {
+  margin: 7px 0;
+}
+
+.main-menu li {
+  position: relative;
+  display: block;
+  width: 250px;
+}
+
+.main-menu li > span {
+  position: relative;
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 14px;
+  text-decoration: none;
+  transform: translateZ(0) scale(1, 1);
+  transition: all 0.1s linear;
+  -webkit-transform: translateZ(0) scale(1, 1);
+  -webkit-transition: all 0.1s linear;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  text-decoration-color: var(--primary-color-button-links);
+}
+
+nav {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+nav ul,
+nav li {
+  outline: 0;
+  margin: 0 2px;
+  padding: 0;
+}
+
+.iconColor{
+  color:#555a8f;
+}
+
+.headingClass{
+  height: 48px;
+    left: 40px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 56px;
+    color: #2a2a2a;
+    margin-left: 110px !important;
+}
+
+.headerContent{
+  background-color: #f9fbfd;
+  display: block;
+  height: 96px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+  border: 1.5px solid #dedede;
+}
+
+.headerContents{
+  display: flex; 
+  flex-direction: row; 
+  align-content: center;
+  margin-right: 10px;
+}
+
+.profileIcon{
+  margin-left: 10px;
+}
+
+.userName{
+  color: #555a8f
+}
+
+.certificateFirst {
+  margin: 96px 0 0 0px;
+  width: calc(100vw - 72px);
+  min-height: calc(100vh - 96px);
+}
+
+.certificateSecond{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: calc(100vh - 96px);
 }
 
-.App-link {
-  color: #61dafb;
+.certificateThird {
+  display: flex;
+  flex-direction: row;
+  background-color: #f0efff;
+  height: 64px;
+  width: 100%;
+  padding: 16px 20px;
+  border-top: 1.5px solid #dedede;
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.certificateFourth{
+  height: 100%;
+  max-height: calc(100vh - 160px);
+}
+
+.interviewFirst{
+  padding-top: 100px;
+  padding-left: 10px
+}
+
+.applicationFirst{
+  padding-top: 100px;
+  padding-left: 10px;
+}
+
+.webcodeFirst{
+  margin: 96px 0 0 0px;
+  width: calc(100vw - 72px);
+  min-height: calc(100vh - 96px);
+}
+
+.webcodeSecond {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 96px);
+}
+
+.webcodeThird{
+  display: flex;
+  flex-direction: row;
+  background-color: #f0efff;
+  height: 64px;
+  width: 100%;
+  padding: 16px 20px;
+  border-top: 1.5px solid #dedede;
+  justify-content: space-between;
+}
+
+.webcodeFourth{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.webcodeFifth{
+  display: flex;
+  flex-direction: row;
+  gap: 16px; 
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+  background-color: #aaa; /* Set the color of the scrollbar thumb */
+  border-radius: 10px; /* Set the border radius of the scrollbar thumb */
+}
+
+/* Scrollbar track (background) */
+.sidebar-content::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Set the background color of the scrollbar track */
+}
+
+/* Optional: scrollbar on hover */
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+  background-color: #888; /* Set the hover color of the scrollbar thumb */
+}
+
+tbody, thead, tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.syllabus{
+  margin: 110px 0px 0px 5px;
+}
+
+.kEMDGa table {
+  height: max-content;
+  top: 208px;
+  background: rgb(255, 255, 255);
+  border: 1.5px solid rgb(222, 222, 222);
+  box-sizing: border-box;
+  border-radius: 16px;
+  z-index: -1;
+  table-layout: auto;
+  margin-bottom: 2rem;
+  border-collapse: separate !important;
+}
+
+.kEMDGa table thead {
+  background: rgb(247, 245, 252);
+  color: rgb(51, 2, 138);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  height: 50px;
+  left: 92px;
+  box-sizing: border-box;
+  border-radius: 16px 16px 0px 0px;
+}
+
+.kEMDGa table thead th {
+  font-style: normal;
+  font-weight: 500;
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+tr td {
+  border-collapse: initial;
+  border-spacing: 0 15px;
+  padding-left: 15px;
+}
+
+
+.logout-div {
+  position: absolute;
+  top: 80px;
+  right: 65px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 185px;
+}
+
+.logout-div button {
+  display: block;
+  width: 100%;
+  padding: .25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: initial;
+  border: 0;
+}
+
+.logout-div button:hover {
+  background-color: #0056b3; /* Hover state background color */
 }
