@@ -2,6 +2,10 @@
     margin: 110px 0px 0px 5px;
 }
 
+.placementCol{
+    margin-right: 5px !important;
+}
+
 .card-header {
     font-style: normal;
     font-weight: 500;

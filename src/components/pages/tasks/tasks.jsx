@@ -1,7 +1,7 @@
 import React from 'react'
 import './tasks.css'
 
-export default function tasks() {
+export default function tasks({ toggleComponent }) {
   return (
     <section class="tasks-section">
     <div class="container-fluid">
@@ -16,7 +16,7 @@ export default function tasks() {
         </div>
         <div class="row">
             <div class="col-xl-12 my-4 parent-column">
-                <div class="main-content">
+                <div class="main-content" onClick={() => toggleComponent()}>
                     <div class="left-content">
                         <h3>Varun Harikumar</h3>
                         <div>

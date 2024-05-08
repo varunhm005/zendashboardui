@@ -17,10 +17,14 @@ import PlacementComponent from './components/pages/Placement/placementsessions'
 import PlacementBoardComponent from'./components/pages/placementBoard/placementboard'
 import Syllabus from'./components/pages/syllabus'
 import MockInterviewCOmponent from './components/pages/mockInterview'
-import TasksComponent from './components/pages/tasks/tasks'
-import CapstoneComponent from './components/pages/capstone/capstone'
+import TasksComponent from './components/pages/tasks/mainTask'
+import CapstoneComponent from './components/pages/capstone/maincapstone'
 import RequirementComponent from './components/pages/requirements/requirements'
 import LeaderboardComponent from './components/pages/leaderboard/leaderboard'
+import TestimonialComponent from './components/pages/testimonial/testimonial'
+import CreateTestimonialComponent from './components/pages/testimonial/createtestimonial'
+import LeaveappComponent from './components/pages/leaveApplication/leaveApplication'
+import PortfolioComponent from './components/pages/portfolio/portfolio'
 
 
 
@@ -53,6 +57,10 @@ function App() {
           <Route path="/syllabus" element={<Syllabus />} />
           <Route path="/leaderboard" element={<LeaderboardComponent />} />
           <Route path="/mockInterview" element={<MockInterviewCOmponent />} />
+          <Route path="/testimonial" element={<TestimonialComponent />} />
+          <Route path="/createtestimonial" element={<CreateTestimonialComponent />} />
+          <Route path="/leaveapplication" element={<LeaveappComponent />} />
+          <Route path="/portfolio" element={<PortfolioComponent />} />
 
 
         </Routes>

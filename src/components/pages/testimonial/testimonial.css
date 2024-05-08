@@ -1,0 +1,81 @@
+.testimonial-container{
+    margin: 100px 0px 0px 0px;
+}
+.testimonialFirst {
+    margin: 96px 0 0 0px;
+    width: calc(100vw - 72px);
+    min-height: calc(100vh - 96px);
+  }
+  
+  .testimonialSecond{
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 96px);
+  }
+  
+  .testimonialThird {
+    display: flex;
+    flex-direction: row;
+    background-color: #f0efff;
+    height: 64px;
+    width: 100%;
+    padding: 16px 20px;
+    border-top: 1.5px solid #dedede;
+    justify-content: space-between;
+  }
+  
+  .testimonialFourth{
+    height: 100%;
+    max-height: calc(100vh - 160px);
+  }
+
+  .createtestimonial-container{
+    margin: 100px 0px 0px 0px;
+  }
+
+  .baseContainer {
+    width: 768px;
+    border: 2px solid #efefef;
+    border-radius: 16px;
+    padding: 16px 24px;
+    margin: 0 auto 8px !important;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
+}
+
+.formInputs {
+  font-size: 1rem;
+  padding: 12px 16px;
+  display: block;
+  border: 1px solid #7e8e9f;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  height: 3.4rem;
+    width: 100%;
+}
+
+.inputContainer {
+  width: 50%;
+  margin: 16px auto 0;
+}
+
+.cancel-btn {
+  background: #fff;
+  border: 1px solid #4c0dba;
+  color: #4c0dba !important;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.lastBtns{
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: rgb(129, 83, 207);
+  color: white !important;
+  padding: '0px 30px';
+  margin-left: 10px;
+}
+
+.lastBtns button{
+  color: white;
+}
+

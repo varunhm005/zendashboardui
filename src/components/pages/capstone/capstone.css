@@ -24,9 +24,9 @@
 .search-row{
     background: #f0efff;
 }
-.search-col{
+.search-col-capstone{
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 .search-icon{
     position: absolute;
@@ -45,8 +45,36 @@
     display:flex;
     flex-direction: row;
 }
-.requirements-section{
+
+.main-content-capstone{
+    height: auto;
+    /* min-height: 105px; */
+    max-height: 120px;
+    width: 100%;
+    border: 1.5px solid #efefef;
+    border-radius: 16px;
+    padding: 24px;
+    background: #fff;
+    display:flex;
+    flex-direction: row; 
+    align-self: normal; 
+}
+
+.capstone-section{
+    margin: 100px 0px 0px 0px;
     background: #dbe1e745;
+    max-height: 595px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+.capstone-section-detail{
+    margin: 100px 0px 0px 0px;
+    background: #dbe1e745;
+    max-height: 595px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    color: #555a8f;
+
 }
 .main-content:hover{
     box-shadow: 0 8px 8px rgba(0,0,0,.05);
@@ -95,4 +123,41 @@
 
 .left-content h3{
     color: #555a8f;
+}
+
+.addSession-Head{
+    /* display: flex;
+    flex-direction: column;
+    padding: 16px 12px;
+    grid-gap: 12px;
+    gap: 12px;
+    background-color: #f7f7f8; */
+    max-height: 500px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    color: #555a8f;
+}
+
+.codeSubmission {
+    font-size: 1rem;
+    padding: 12px 16px;
+    border: 1px solid #7e8e9f;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.reqbuttoncreate {
+    height: 48px;
+    background: #4b0dba;
+    border: 1px solid #4b0dba;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    color: white;
 }

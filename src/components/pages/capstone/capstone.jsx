@@ -1,9 +1,9 @@
 import React from 'react'
 import './capstone.css'
 
-export default function capstone() {
+export default function capstone({ toggleComponent }) {
   return (
-        <section class="requirements-section">
+        <section class="capstone-section">
         <div class="container-fluid">
           <div class="row search-row">
             <div class="col-xl-12 search-col">
@@ -16,7 +16,7 @@ export default function capstone() {
             </div>
             <div class="row">
                 <div class="col-xl-12 my-4 parent-column">
-                    <div class="main-content">
+                    <div class="main-content" onClick={() => toggleComponent()}>
                         <div class="left-content">
                             <h3>Varun Harikumar</h3>
                             <div>

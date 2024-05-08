@@ -1,0 +1,30 @@
+.portfolio-container{
+    margin: 100px 0px 0px 0px;
+}
+
+.portfolioFirst {
+    margin: 96px 0 0 0px;
+    width: calc(100vw - 72px);
+    min-height: calc(100vh - 96px);
+  }
+  
+  .portfolioSecond{
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 96px);
+  }
+  
+  .portfolioThird {
+    display: flex;
+    flex-direction: row;
+    background-color: #f0efff;
+    height: 64px;
+    width: 100%;
+    padding: 16px 20px;
+    border-top: 1.5px solid #dedede;
+    justify-content: space-between;
+  }
+
+  .border-right {
+    border-right: 1px solid #dee2e6 !important;
+}

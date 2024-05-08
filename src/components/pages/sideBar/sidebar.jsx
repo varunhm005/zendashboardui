@@ -56,7 +56,7 @@ const Sidebar = () => {
               <CDBSidebarMenuItem icon="plus-square" className='iconColor'>Requirements</CDBSidebarMenuItem>
             </NavLink>
 
-            <NavLink exact to="/hero404" activeClassName="activeClicked">
+            <NavLink exact to="/portfolio" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="tasks" className='iconColor'>Portfolio-submission</CDBSidebarMenuItem>
             </NavLink>
 
@@ -68,7 +68,7 @@ const Sidebar = () => {
               <CDBSidebarMenuItem icon="list-alt" className='iconColor'>Interviewtasks</CDBSidebarMenuItem>
             </NavLink>
 
-            <NavLink exact to="/hero404" activeClassName="activeClicked">
+            <NavLink exact to="/leaveapplication" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="atlas" className='iconColor'>Leave-applications</CDBSidebarMenuItem>
             </NavLink>
 
@@ -80,7 +80,7 @@ const Sidebar = () => {
               <CDBSidebarMenuItem icon="atlas" className='iconColor'>Certificate</CDBSidebarMenuItem>
             </NavLink>
 
-            <NavLink exact to="/hero404" target="_blank" activeClassName="activeClicked">
+            <NavLink exact to="/testimonial"  activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="atlas" className='iconColor'>Testimonial</CDBSidebarMenuItem>
             </NavLink>
 
