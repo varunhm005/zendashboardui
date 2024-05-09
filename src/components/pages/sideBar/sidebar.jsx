@@ -48,7 +48,7 @@ const Sidebar = () => {
               <CDBSidebarMenuItem icon="user-circle" className='iconColor'>Placement-Sessions</CDBSidebarMenuItem>
             </NavLink>
 
-            <NavLink exact to="/hero404" activeClassName="activeClicked">
+            <NavLink exact to="/queries" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="atlas" className='iconColor'>Queries</CDBSidebarMenuItem>
             </NavLink>
 

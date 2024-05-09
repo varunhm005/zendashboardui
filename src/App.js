@@ -25,6 +25,8 @@ import TestimonialComponent from './components/pages/testimonial/testimonial'
 import CreateTestimonialComponent from './components/pages/testimonial/createtestimonial'
 import LeaveappComponent from './components/pages/leaveApplication/leaveApplication'
 import PortfolioComponent from './components/pages/portfolio/portfolio'
+import QueryComponent from './components/pages/queries/queries'
+import CreateQueryComponent from './components/pages/queries/createquery'
 
 
 
@@ -61,6 +63,9 @@ function App() {
           <Route path="/createtestimonial" element={<CreateTestimonialComponent />} />
           <Route path="/leaveapplication" element={<LeaveappComponent />} />
           <Route path="/portfolio" element={<PortfolioComponent />} />
+          <Route path="/queries" element={<QueryComponent />} />
+          <Route path="/createquery" element={<CreateQueryComponent />} />
+          
 
 
         </Routes>
