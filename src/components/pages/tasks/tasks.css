@@ -47,6 +47,7 @@
     background: #fff;
     display:flex;
     flex-direction: row;
+    margin-bottom: 10px;
 }
 
 .main-content-detail{
@@ -60,6 +61,7 @@
     background: #fff;
     display:flex;
     flex-direction: row;
+    margin-bottom: 10px;
 }
 
 .requirements-section{
@@ -133,4 +135,10 @@
 .marksContainer {
     background: #f0efff;
     border-radius: 0 0 16px 16px;
+}
+
+.parent-column-detail{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }

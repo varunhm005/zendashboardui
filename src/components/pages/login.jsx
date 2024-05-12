@@ -1,15 +1,43 @@
-import React from 'react'
+import React, {useState} from 'react'
 import loginImage from '../../Images/loginImage.jpg';
 import { useNavigate } from 'react-router-dom';
-
+import { postData } from '../../api/api'
+import { jwtDecode } from "jwt-decode";
 
 
 const Login = () =>  {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const handleLogin = () => {
-      // Navigate to the desired page when the button is clicked
-      navigate('/dashboard');
-    };
+    // const handleLogin = () => {
+
+
+        
+    //   // Navigate to the desired page when the button is clicked
+    // //   navigate('/dashboard');
+    // };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // Send a request to your backend with the entered credentials
+        const response = await postData('/login', JSON.stringify({ email, password }), {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });    
+        if (response.code === 200) {
+            let token = response.data.token
+          // Store the token in local storage
+          localStorage.setItem('token', token);
+
+          navigate('/dashboard');
+        //   // Set the token to state
+        //   setToken(token);
+        } else {
+          // Handle login error
+          alert('Invalid username or password');
+        }
+      };
 
   return (
     <div className="container-fluid mr-0 pr-0">
@@ -21,20 +49,20 @@ const Login = () =>  {
                 <div className="row">
                     <div className="col-md-12 d-flex flex-column justify-content-center align-items-center" >
                         <div className='col-md-6'>
-                            <form action="">
+                            <form onSubmit={handleSubmit}>
                                 <div className="form-group mt-2">
                                 <label for="email" class="label-style mb-0">Email</label>
                                 <div>
-                                <input className="form-control" name="email"  type="email" placeholder='Your email'></input>
+                                <input className="form-control" type='email' id="email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
                                 </div>
                                 </div>
                                 <div className="form-group mt-1">
                                 <label for="password" class="label-style mb-0">Password</label>
                                 <div>
-                                <input className="form-control" name="password" placeholder="Your password" type="password" ></input>
+                                <input className="form-control" type='password' id="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
                                 </div>
                                 </div>
-                                <button type="submit" className="col-md-12 btn btn-lg btn-block login-button mt-4 mb-4 " onClick={handleLogin}>Login</button>
+                                <button type="submit" className="col-md-12 btn btn-lg btn-block login-button mt-4 mb-4 " >Login</button>
                             </form>
 
                         </div>

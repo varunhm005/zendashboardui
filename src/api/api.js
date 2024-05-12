@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
   baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
-    'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTQ4OTQ2ODIsImV4cCI6MTcxNDg5ODI4Mn0.n9EElpKmaXkyRGwNU89ApN0FVwdcFQYki0sAcAglbbk'
+    'authorization': localStorage.getItem('token')
     // Add any other headers if required
   },
 });
@@ -15,6 +15,20 @@ const axiosInstance = axios.create({
 export const fetchData = async (endpoint, params) => {
   try {
     const response = await axiosInstance.get(endpoint, { params });
+    return response.data;
+  } catch (error) {
+    // Handle errors here
+    console.error('Error fetching data:', error);
+    throw error;
+  }
+};
+
+export const postData = async (endpoint,payload, params) => {
+  try {
+
+    console.log("endpoint",endpoint)
+    const response = await axiosInstance.post(endpoint, payload,params);
+    console.log("response",response.data)
     return response.data;
   } catch (error) {
     // Handle errors here

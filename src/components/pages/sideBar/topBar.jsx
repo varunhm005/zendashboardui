@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import UserImage from '../../../Images/user.png'
 
@@ -11,12 +11,14 @@ export default function TopBar() {
     };
     const location = useLocation();
     const { pathname, search, state } = location;
-    console.log("pathname", pathname)
+    const navigate = useNavigate();
 
-    const logout = () => {
-        // Implement logout logic here
-        console.log("Logout");
-    };
+    const handleLogout = () => {
+        // Clear authentication token from local storage
+        localStorage.removeItem('token');
+        // Redirect the user to the login page
+        navigate('/');
+      };
     
     return (
         <nav className='headerContent justify-content-between align-items-center' style={{ display: pathname === '/' ? 'none' : 'flex' }} >
@@ -31,7 +33,7 @@ export default function TopBar() {
                 <div className="logout-div">
                     {/* Content for logout */}
                     <button >Profile</button>
-                    <button onClick={logout}>Logout</button>
+                    <button onClick={handleLogout}>Logout</button>
                 </div>
             )}
         </nav>

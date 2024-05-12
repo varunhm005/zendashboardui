@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginComponent from './components/pages/login';
 import Sidebar from './components/pages/sideBar/sidebar';
-import DashboardComponent from './components/pages/dashboard';
+import DashboardComponent from './components/pages/dashboard/dashboard';
 import TopNavBar from './components/pages/sideBar/topBar';
 import Certificate from './components/pages/certificate';
 import InterviewTask from './components/pages/interviewtasks'
