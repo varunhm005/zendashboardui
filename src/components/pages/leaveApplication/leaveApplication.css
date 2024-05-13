@@ -1,105 +1,124 @@
-.leaveapplication-container{
-    margin: 100px 0px 0px 0px;
+.leaveapplication-container {
+  margin: 100px 0px 0px 0px;
 }
 
 .leaveappFirst {
-    margin: 96px 0 0 0px;
-    width: calc(100vw - 72px);
-    min-height: calc(100vh - 96px);
-  }
-  
-  .leaveappSecond{
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100vh - 96px);
-  }
-  
-  .leaveappThird {
-    display: flex;
-    flex-direction: row;
-    background-color: #f0efff;
-    height: 64px;
-    width: 100%;
-    padding: 16px 20px;
-    border-top: 1.5px solid #dedede;
-    justify-content: space-between;
-  }
+  margin: 96px 0 0 0px;
+  width: calc(100vw - 72px);
+  min-height: calc(100vh - 96px);
+}
+
+.leaveappSecond {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 96px);
+}
+
+.leaveappThird {
+  display: flex;
+  flex-direction: row;
+  background-color: #f0efff;
+  height: 64px;
+  width: 100%;
+  padding: 16px 20px;
+  border-top: 1.5px solid #dedede;
+  justify-content: space-between;
+}
+
+.leave-details {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.parent-column-leave {
+  background: #dbe1e745;
+  max-height: 595px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+.leave-component {
+  background: #dbe1e745;
+  max-height: 532px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
 
 
-  /* styles.css */
+/* styles.css */
 .modal {
-    display: block;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 30%;
-  }
-  
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
 
-  .modal-heading-area {
-    height: 80px;
-    background: #f7f5fc;
-    border-radius: 16px 16px 0 0;
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-heading-area {
+  height: 80px;
+  background: #f7f5fc;
+  border-radius: 16px 16px 0 0;
 }
 
 .leave_select__1wE2t {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 
 .leave_select__1wE2t select {
-    font-size: 1rem;
-    padding: 12px 16px;
-    display: block;
-    border: 1px solid #7e8e9f;
-    border-radius: 8px;
-    width: 100%;
-    margin-bottom: 1rem;
+  font-size: 1rem;
+  padding: 12px 16px;
+  display: block;
+  border: 1px solid #7e8e9f;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 .modal-heading {
-    vertical-align: middle;
-    font-size: 24px;
-    color: #2a2a2a;
-    margin-top: 20px;
+  vertical-align: middle;
+  font-size: 24px;
+  color: #2a2a2a;
+  margin-top: 20px;
 }
 
 .cancel-btn {
-    background: #fff;
-    border: 1px solid #4c0dba;
-    color: #4c0dba !important;
-    box-sizing: border-box;
-    border-radius: 8px;
+  background: #fff;
+  border: 1px solid #4c0dba;
+  color: #4c0dba !important;
+  box-sizing: border-box;
+  border-radius: 8px;
 }
 
 .submit-btn {
-    background: #4c0dba;
-    color: #fff;
-    border-radius: 8px;
+  background: #4c0dba;
+  color: #fff;
+  border-radius: 8px;
 }
