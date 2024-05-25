@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import './requirements.css'
 import { fetchData } from '../../../api/api'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-export default function Requirements() {
+function Requirements() {
 
     const [data, setData] = useState(null);
 
@@ -11,7 +12,6 @@ export default function Requirements() {
         const getRequirement = async () => {
           try {
             const result = await fetchData('/requirement');
-            console.log("result",result.data)
             if(result.code === 200){
                 setData(result.data);
               }
@@ -100,3 +100,5 @@ export default function Requirements() {
     </div>
 </section>  )
 }
+
+export default withAuthCheck(Requirements);

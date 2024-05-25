@@ -1,6 +1,7 @@
 import React from 'react'
+import withAuthCheck from '../Auth/withAuthCheck';
 
-export default function webcode() {
+function webcode() {
     return (
         <div class="webcodeFirst">
             <div class="webcodeSecond">
@@ -16,3 +17,5 @@ export default function webcode() {
         </div>
     )
 }
+
+export default withAuthCheck(webcode);

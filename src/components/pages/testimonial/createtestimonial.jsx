@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-export default function createtestimonial() {
+function createtestimonial() {
     return (
         <section className='createtestimonial-container' >
             <div class="testimonialSecond">
@@ -52,3 +53,5 @@ export default function createtestimonial() {
         </section >
     )
 }
+
+export default withAuthCheck(createtestimonial);

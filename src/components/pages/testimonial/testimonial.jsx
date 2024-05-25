@@ -1,8 +1,9 @@
 import React from 'react'
 import './testimonial.css'
 import { Link  } from 'react-router-dom';
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-export default function testimonial() {
+function testimonial() {
   return (
     <section className="testimonial-container">
             <div class="testimonialSecond">
@@ -22,3 +23,5 @@ export default function testimonial() {
         </section>
   )
 }
+
+export default withAuthCheck(testimonial);

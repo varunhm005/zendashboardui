@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { fetchData } from '../../../api/api'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-export default function Capstonedetail({ hideDetailComponent }) {
+function Capstonedetail({ hideDetailComponent }) {
 
     const [data, setData] = useState(null);
     const [index, setIndex] = useState(0);
@@ -184,3 +185,5 @@ export default function Capstonedetail({ hideDetailComponent }) {
         </section>
     )
 }
+
+export default withAuthCheck(Capstonedetail);

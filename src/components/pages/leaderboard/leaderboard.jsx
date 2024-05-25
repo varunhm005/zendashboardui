@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react'
 import './leaderboard.css'
 // import leaderImage from '../../../../public/leader.svg';
 import { fetchData } from '../../../api/api'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
 
-
-export default function Leaderboard() {
+function Leaderboard() {
 
     const [data, setData] = useState(null);
 
@@ -14,7 +14,6 @@ export default function Leaderboard() {
         const getLeaderBoard = async () => {
           try {
             const result = await fetchData('/leaderboard');
-            console.log("result",result.data)
             if(result.code === 200){
                 setData(result.data);
               }
@@ -56,7 +55,7 @@ export default function Leaderboard() {
                         <tr>
                             <td style={{ 'text-align': 'center', 'vertical-align': 'middle' }}>
                                 {
-                                    item.rank == "1" ? <img class="p-2" src="/Icons/rankone.svg" alt="add/plus"></img> : item.rank == "2" ? <img class="p-2" src="/Icons/ranktwo.svg" alt="add/plus"></img> : item.rank
+                                    item.rank === "1" ? <img class="p-2" src="/Icons/rankone.svg" alt="add/plus"></img> : item.rank === "2" ? <img class="p-2" src="/Icons/ranktwo.svg" alt="add/plus"></img> : item.rank
                                 }
                                 
                             </td>
@@ -75,3 +74,5 @@ export default function Leaderboard() {
         </section>
     )
 }
+
+export default withAuthCheck(Leaderboard);

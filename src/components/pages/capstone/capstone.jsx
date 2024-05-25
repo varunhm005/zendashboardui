@@ -1,8 +1,9 @@
 import React, {useState, useEffect}  from 'react'
 import './capstone.css'
 import { fetchData } from '../../../api/api'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-export default function Capstone({ toggleComponent }) {
+function Capstone({ toggleComponent }) {
 
     const [data, setData] = useState(null);
     useEffect(() => {
@@ -70,3 +71,5 @@ export default function Capstone({ toggleComponent }) {
     </section>
   )
 }
+
+export default withAuthCheck(Capstone);

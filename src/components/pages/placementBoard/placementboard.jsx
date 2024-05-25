@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import './placementboard.css'
 import { fetchData } from '../../../api/api'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-export default function Placementboard() {
+function Placementboard() {
 
     const [data, setData] = useState(null);
 
@@ -11,7 +12,6 @@ export default function Placementboard() {
         const getPlacementBoard = async () => {
           try {
             const result = await fetchData('/placementboard');
-            console.log("result",result.data)
             if(result.code === 200){
                 setData(result.data);
               }
@@ -68,3 +68,5 @@ export default function Placementboard() {
         </section>
     )
 }
+
+export default withAuthCheck({Placementboard});

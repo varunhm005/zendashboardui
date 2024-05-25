@@ -1,6 +1,7 @@
 import React from 'react'
+import withAuthCheck from '../Auth/withAuthCheck';
 
-export default function syllabus() {
+function syllabus() {
   return (
     <section className='syllabus'>
 <div style={{overflow: 'auto',width: '50%',margin: 'auto',maxHeight: '800px',}}>
@@ -23,3 +24,5 @@ export default function syllabus() {
     </section>
   )
 }
+
+export default withAuthCheck(syllabus);

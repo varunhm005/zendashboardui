@@ -13,7 +13,6 @@ export default function ClassField() {
       if(result.code == 200){
         setData(result.data);
       }
-      console.log("dataaa",data)
 
     } catch (error) {
       // Handle error if needed

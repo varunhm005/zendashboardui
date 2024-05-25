@@ -1,9 +1,9 @@
 import React, { useRef } from 'react'
 import { Link } from 'react-router-dom';
 import { postData } from '../../../api/api'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-
-export default function Createquery() {
+function Createquery() {
 
     const categoryRef = useRef(null);
     const languageRef = useRef(null);
@@ -129,3 +129,5 @@ export default function Createquery() {
         </section >
     )
 }
+
+export default withAuthCheck(Createquery);

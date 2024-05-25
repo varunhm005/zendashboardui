@@ -1,7 +1,8 @@
 import React from 'react'
 import './portfolio.css'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-export default function portfolio() {
+function portfolio() {
     return (
         <section className="portfolio-container">
             <div class="portfolioSecond">
@@ -81,3 +82,5 @@ export default function portfolio() {
         </section>
     )
 }
+
+export default withAuthCheck(portfolio);

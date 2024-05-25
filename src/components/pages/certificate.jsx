@@ -1,6 +1,7 @@
 import React from 'react'
+import withAuthCheck from '../Auth/withAuthCheck';
 
-export default function certificate() {
+function certificate() {
     return (
         <div class="certificateFirst">
             <div class="certificateSecond">
@@ -16,3 +17,5 @@ export default function certificate() {
         </div>
     )
 }
+
+export default withAuthCheck(certificate);

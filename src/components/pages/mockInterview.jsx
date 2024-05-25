@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { fetchData } from '../../api/api'
+import withAuthCheck from '../Auth/withAuthCheck';
 
 
 
-export default function DataTable() {
+function DataTable() {
 
   const columns = [
     { field: 'round', headerName: 'Mock Interview Round', width: 150 },
@@ -16,18 +17,6 @@ export default function DataTable() {
   
   ];
   
-  const rows = [
-    { id: 1, MockInterviewRound: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-  ];
-
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -35,7 +24,6 @@ export default function DataTable() {
       const getQuery = async () => {
         try {
           const result = await fetchData('/interview');
-          console.log("result",result.data)
           if(result.code === 200){
               setData(result.data);
             }
@@ -44,7 +32,6 @@ export default function DataTable() {
         }
       };
 
-      console.log("data",data)
   
       // Call the fetch data function when the component mounts
       getQuery();
@@ -55,8 +42,6 @@ export default function DataTable() {
         // You can do any clean-up here if necessary
       };
     }, []); 
-
-    // console.log("rows",rows)
 
 
   return (
@@ -75,3 +60,5 @@ export default function DataTable() {
     </div>
   );
 }
+
+export default withAuthCheck(DataTable);

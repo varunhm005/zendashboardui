@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import Task from './tasks'
 import TaskDetail from './taskdetail'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-export default function MainTask() {
+function MainTask() {
 
     const [showTask, setShowTask] = useState(true);
 
@@ -20,3 +21,5 @@ export default function MainTask() {
     </div>
   )
 }
+
+export default withAuthCheck(MainTask);

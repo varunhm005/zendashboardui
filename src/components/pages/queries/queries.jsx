@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react'
 import './queries.css'
 import { Link  } from 'react-router-dom';
 import { fetchData } from '../../../api/api'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
 
-export default function Queries() {
+function Queries() {
 
     const [data, setData] = useState(null);
     const [index, setIndex] = useState(0);
@@ -115,3 +116,5 @@ export default function Queries() {
         </section>
     )
 }
+
+export default withAuthCheck(Queries);

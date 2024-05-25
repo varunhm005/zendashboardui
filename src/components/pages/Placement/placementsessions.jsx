@@ -1,7 +1,8 @@
 import React from 'react'
 import './placement.css'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-export default function placementsessions() {
+function placementsessions() {
   return (
     <section class="Placement-section">
     <div class="container-fluid">
@@ -38,3 +39,5 @@ export default function placementsessions() {
   </section>
   )
 }
+
+export default withAuthCheck(placementsessions);

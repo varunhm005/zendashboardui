@@ -12,6 +12,21 @@ const axiosInstance = axios.create({
   },
 });
 
+axiosInstance.interceptors.request.use(
+  (config) => {
+      const token = localStorage.getItem('token');
+      if (token) {
+          config.headers['authorization'] = token;
+      }
+      return config;
+  },
+  (error) => {
+      return Promise.reject(error);
+  }
+);
+
+export { axiosInstance };
+
 export const fetchData = async (endpoint, params) => {
   try {
     const response = await axiosInstance.get(endpoint, { params });
@@ -26,9 +41,7 @@ export const fetchData = async (endpoint, params) => {
 export const postData = async (endpoint,payload, params) => {
   try {
 
-    console.log("endpoint",endpoint)
     const response = await axiosInstance.post(endpoint, payload,params);
-    console.log("response",response.data)
     return response.data;
   } catch (error) {
     // Handle errors here

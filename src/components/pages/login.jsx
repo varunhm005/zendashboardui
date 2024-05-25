@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
 import loginImage from '../../Images/loginImage.jpg';
 import { useNavigate } from 'react-router-dom';
-import { postData } from '../../api/api'
-import { jwtDecode } from "jwt-decode";
-
-
+import { postData, axiosInstance } from '../../api/api'
+// import {axiosInstance} from './path/to/your/axiosInstance'; 
 const Login = () =>  {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -30,7 +28,12 @@ const Login = () =>  {
           // Store the token in local storage
           localStorage.setItem('token', token);
 
-          navigate('/dashboard');
+          axiosInstance.defaults.headers['authorization'] = token;
+
+          // setLoading(true);
+          // setTimeout(() => {
+            navigate('/dashboard');
+          // }, 5000);
         //   // Set the token to state
         //   setToken(token);
         } else {

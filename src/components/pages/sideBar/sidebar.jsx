@@ -2,7 +2,6 @@ import React from 'react';
 import {
   CDBSidebar,
   CDBSidebarContent,
-  CDBSidebarFooter,
   CDBSidebarHeader,
   CDBSidebarMenu,
   CDBSidebarMenuItem,
@@ -14,7 +13,7 @@ const Sidebar = () => {
   const location = useLocation();
 
   // Accessing pathname, search, and state from location object
-  const { pathname, search, state } = location;
+  const { pathname } = location;
   return (
     <div style={{ display: 'flex'}}>
       <CDBSidebar style={{flex: '1 auto', display: pathname === '/' ? 'none' : ''}} textColor="#000" backgroundColor="#FFF">

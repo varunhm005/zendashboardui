@@ -35,7 +35,6 @@ import CreateQueryComponent from './components/pages/queries/createquery'
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
-  console.log("loggedIn", loggedIn, setLoggedIn)
 
 
   return (

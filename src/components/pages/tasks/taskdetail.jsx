@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { fetchData } from '../../../api/api'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-export default function Taskdetail({ hideDetailComponent }) {
+function Taskdetail({ hideDetailComponent }) {
 
     const [data, setData] = useState(null);
     const [index, setIndex] = useState(0);
@@ -118,3 +119,5 @@ export default function Taskdetail({ hideDetailComponent }) {
         </section>
     )
 }
+
+export default withAuthCheck(Taskdetail);

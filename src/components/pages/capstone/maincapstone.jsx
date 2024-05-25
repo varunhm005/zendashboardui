@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import Capstone from './capstone'
 import CapstoneDetail from './capstonedetail'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-export default function Maincapstone() {
+function Maincapstone() {
 
     const [showCapstone, setShowCapstone] = useState(true);
 
@@ -18,3 +19,5 @@ export default function Maincapstone() {
     <div> {showCapstone ? <Capstone toggleComponent={toggleComponent} /> : <CapstoneDetail hideDetailComponent={hideDetailComponent} />}  </div>
   )
 }
+
+export default withAuthCheck(Maincapstone);

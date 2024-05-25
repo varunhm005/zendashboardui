@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import './tasks.css'
 import { fetchData } from '../../../api/api'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-export default function Tasks({ toggleComponent }) {
+function Tasks({ toggleComponent }) {
 
     const [data, setData] = useState(null);
     useEffect(() => {
@@ -72,3 +73,5 @@ export default function Tasks({ toggleComponent }) {
 
     )
 }
+
+export default withAuthCheck(Tasks);

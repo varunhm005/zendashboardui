@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './leaveApplication.css'
 import { fetchData, postData } from '../../../api/api'
+import withAuthCheck from '../../Auth/withAuthCheck';
 
-export default function LeaveApplication() {
+function LeaveApplication() {
 
     const [data, setData] = useState(null);
     const [showModal, setShowModal] = useState(false);
@@ -160,3 +161,5 @@ export default function LeaveApplication() {
         </section>
     )
 }
+
+export default withAuthCheck(LeaveApplication);

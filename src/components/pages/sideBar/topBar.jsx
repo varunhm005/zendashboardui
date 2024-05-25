@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-
+import { useLocation, useNavigate } from 'react-router-dom';
 import UserImage from '../../../Images/user.png'
 
 
@@ -10,7 +9,7 @@ export default function TopBar() {
         setIsLogoutOpen(!isLogoutOpen);
     };
     const location = useLocation();
-    const { pathname, search, state } = location;
+    const { pathname } = location;
     const navigate = useNavigate();
 
     const handleLogout = () => {

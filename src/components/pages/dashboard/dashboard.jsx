@@ -25,7 +25,7 @@ function Dashboard() {
   const [codeTotal, setCodeTotal] = useState(0);
 
   const [codeChartData, setCodeChartData] = useState({
-    labels: Data.map((data) => data.day),
+    labels: [],
     datasets: [
       {
         label: "Users Gained ",
@@ -41,7 +41,7 @@ function Dashboard() {
   });
 
   const [webChartData, setWebChartData] = useState({
-    labels: Data.map((data) => data.day),
+    labels: [],
     datasets: [
       {
         label: "Points",
@@ -73,6 +73,11 @@ function Dashboard() {
       }
     }
   };
+
+  useEffect(() => {
+    getWeekWebKata(0, 'next', 'initial')
+    getWeekCodeKata(0, 'next', 'initial')
+  }, [])
 
   async function getWeekWebKata(week, type, initial) {
     let firstDay;
@@ -190,13 +195,6 @@ function Dashboard() {
 
     return { firstDay: firstDay.format('DD/MM/YYYY'), lastDay: lastDay.format('DD/MM/YYYY') };
   }
-
-  useEffect(() => {
-    getWeekWebKata(0, 'next', 'initial')
-    getWeekCodeKata(0, 'next', 'initial')
-  }, [])
-
-
 
 
   return (
