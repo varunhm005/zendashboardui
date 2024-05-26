@@ -69,4 +69,4 @@ function Placementboard() {
     )
 }
 
-export default withAuthCheck({Placementboard});
+export default withAuthCheck(Placementboard);
