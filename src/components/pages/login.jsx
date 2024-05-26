@@ -32,7 +32,7 @@ const Login = () =>  {
 
           // setLoading(true);
           // setTimeout(() => {
-            navigate('/dashboard');
+            navigate('/class');
           // }, 5000);
         //   // Set the token to state
         //   setToken(token);

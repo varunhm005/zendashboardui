@@ -9,6 +9,8 @@
     border-radius: 8px;
     width: 100%;
     height: 80px;
+    display: flex;
+    justify-content: space-between;
 }
 .join-class h2{
     color: #fff;
@@ -102,6 +104,12 @@
     color: #fff;
 }
 
+.RINotCompleted {
+    background-color: #fff;
+    color: #000;
+}
+
+
 .straight-line {
     width: 28px;
     border: 2px solid #93a4b7;
@@ -143,4 +151,20 @@
     position: relative;
     bottom: 32px;
     right: 32px;
+}
+
+.join-btn{
+    height: 48px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    background-color: #2ed16c;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+    border: 0;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, .6);
+    margin: 15px;
+    
 }

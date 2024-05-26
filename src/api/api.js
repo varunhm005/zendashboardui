@@ -1,7 +1,7 @@
 // api.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/'; // Replace this with your API URL
+const API_URL = 'https://zendashboard-4ts7.onrender.com/'; // Replace this with your API URL
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
