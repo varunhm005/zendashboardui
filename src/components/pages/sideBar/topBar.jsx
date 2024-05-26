@@ -17,11 +17,14 @@ export default function TopBar() {
         localStorage.removeItem('token');
         // Redirect the user to the login page
         navigate('/');
-      };
-    
+    };
+
+    let formattedPathname = pathname.replace('/', ''); // Remove backslash
+    formattedPathname = formattedPathname.charAt(0).toUpperCase() + formattedPathname.slice(1); // Capitalize first letter
+
     return (
         <nav className='headerContent justify-content-between align-items-center' style={{ display: pathname === '/' ? 'none' : 'flex' }} >
-            <h1 className='headingClass' >Class</h1>
+            <h1 className='headingClass' >{formattedPathname}</h1>
             <div className='headerContents' >
                 <h5 className='mt-3 mr-3 userName' >Varun Harikumar</h5>
                 <div class="flex-icons"><div class="d-flex align-items-center justify-content-center dropdown"><span data-toggle="dropdown" aria-expanded="false" aria-haspopup="true" class="">
