@@ -25,8 +25,10 @@ const Login = () =>  {
         });    
         if (response.code === 200) {
             let token = response.data.token
+            let name = response.data.name
           // Store the token in local storage
           localStorage.setItem('token', token);
+          localStorage.setItem('name', name);
 
           axiosInstance.defaults.headers['authorization'] = token;
 
