@@ -300,3 +300,7 @@ tr td {
 .logout-div button:hover {
   background-color: #0056b3; /* Hover state background color */
 }
+
+.alert-color{
+  color:#b60229
+}

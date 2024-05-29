@@ -1,8 +1,58 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import withAuthCheck from '../../Auth/withAuthCheck';
 
-function createtestimonial() {
+function Createtestimonial() {
+
+    const [formData, setFormData] = useState({
+        uploadPhoto: '',
+        videoUrl: '',
+        description: ''
+    });
+
+    const [errors, setErrors] = useState({});
+    console.log("errors",errors)
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+          ...formData,
+          [name]: value
+        });
+      };
+
+      const validate = () => {
+        const newErrors = {};
+    
+        // if (!formData.uploadPhoto.trim()) {
+        //   newErrors.uploadPhoto = 'Url is required';
+        // }
+    
+        if (!formData.videoUrl.trim()) {
+          newErrors.videoUrl = 'Url is required';
+        }
+    
+        if (!formData.description.trim()) {
+          newErrors.description = 'Description is required';
+        }
+    
+        setErrors(newErrors);
+    
+        return Object.keys(newErrors).length === 0;
+      };
+    
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        if (validate()) {
+          // Submit form data
+          console.log('Form submitted successfully', formData);
+        } else {
+          console.log('Form has errors');
+        }
+      };
+
     return (
         <section className='createtestimonial-container' >
             <div class="testimonialSecond">
@@ -15,22 +65,25 @@ function createtestimonial() {
                 </div>
                 <div class="testimonialFifth">
                     <div class="baseContainer">
-                        <form class="d-flex justify-content-center flex-column mt-2" autocomplete="off">
+                        <form class="d-flex justify-content-center flex-column mt-2" autocomplete="off" onSubmit={handleSubmit} >
                             <div class="inputContainer">
                                 <label for="photo" class="label-style mb-0">Upload Photo</label>
                                 <div>
-                                    <input class="formInputs" name="photo" placeholder="Click to upload the photo" type="text" disabled="" value=""></input>
+                                    <input class="formInputs" name="photo" placeholder="Click to upload the photo" type="text" disabled="" value={formData.uploadPhoto} onChange={handleChange}></input>
+                                    {/* {errors.uploadPhoto && <span  style={{'color':'Red'}} ><i class="fa fa-warning"></i>  {errors.uploadPhoto}</span>} */}
                                 </div>
                             </div>
                             <div class="inputContainer">
                                 <label for="video" class="label-style mb-0">Video</label>
                                 <div>
-                                    <input class="formInputs" name="video" placeholder="Video URL" type="text" value=""></input>
+                                    <input class="formInputs" name="video" placeholder="Video URL" type="text" value={formData.videoUrl} onChange={handleChange}></input>
+                                    {errors.videoUrl && <span  style={{'color':'Red'}} ><i class="fa fa-warning"></i>  {errors.videoUrl}</span>}
                                 </div>
                             </div>
                             <div class="inputContainer">
                                 <label for="description" class="label-style mb-0">Description</label>
-                                <textarea class="formInputs" rows="5" name="description" type="text" placeholder="Enter the Description"></textarea>
+                                <textarea class="formInputs" rows="5" name="description" type="text" placeholder="Enter the Description" value={formData.description} onChange={handleChange}></textarea>
+                                {errors.description && <span  style={{'color':'Red'}} ><i class="fa fa-warning"></i>  {errors.description}</span>}
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="false"></input>
@@ -54,4 +107,4 @@ function createtestimonial() {
     )
 }
 
-export default withAuthCheck(createtestimonial);
+export default withAuthCheck(Createtestimonial);

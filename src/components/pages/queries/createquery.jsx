@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { postData } from '../../../api/api'
 import withAuthCheck from '../../Auth/withAuthCheck';
@@ -12,6 +12,9 @@ function Createquery() {
     const starttimeRef = useRef(null);
     const endtimeRef = useRef(null);
 
+    const [errors, setErrors] = useState({});
+
+
     
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -23,29 +26,63 @@ function Createquery() {
         const till = endtimeRef.current.value;
         // Handle form submission logic here, such as sending the data to a server
 
-        let payload = {
-            category, prefferedLanguage, queryDescription, queryTitle, from, till
-        }
+        const validate = () => {
+            const newErrors = {};
+        
+            if (!category.trim()) {
+              newErrors.category = 'Select a category';
+            }
 
-        const response = await postData('/query', JSON.stringify(payload), {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });    
-          if (response.code === 200) {
-              alert(response.message)
+            if (!prefferedLanguage.trim()) {
+                newErrors.prefferedLanguage = 'Select a Language';
+              }
+
+              if (!queryTitle.trim()) {
+                newErrors.queryTitle = 'Enter a title for query';
+              }
+
+              if (!queryDescription.trim()) {
+                newErrors.queryDescription = 'Enter Brief Description';
+              }
+        
+            setErrors(newErrors);
+        
+            return Object.keys(newErrors).length === 0;
+          };
+    
+
+        if (validate()) {
+           
+            let payload = {
+                category, prefferedLanguage, queryDescription, queryTitle, from, till
+            }
+    
+            const response = await postData('/query', JSON.stringify(payload), {
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });    
+              if (response.code === 200) {
+                  alert(response.message)
+              } else {
+                // Handle login error
+                alert('Failed while creating query');
+              }
+    
+            // You can also reset the form fields here if needed
+            categoryRef.current.value = '';
+            languageRef.current.value = '';
+            descriptionRef.current.value = '';
+            titleRef.current.value = '';
+            starttimeRef.current.value = '';
+            endtimeRef.current.value = '';
+
+
           } else {
-            // Handle login error
-            alert('Failed while creating query');
+            console.log('Form has errors');
           }
 
-        // You can also reset the form fields here if needed
-        categoryRef.current.value = '';
-        languageRef.current.value = '';
-        descriptionRef.current.value = '';
-        titleRef.current.value = '';
-        starttimeRef.current.value = '';
-        endtimeRef.current.value = '';
+
     };
 
     return (
@@ -72,6 +109,7 @@ function Createquery() {
                                         <option value="Coordination Related" index="2" label="Coordination Related"></option>
                                         <option value="Pre-Bootcamp Related" index="3" label="Pre-Bootcamp Related"></option>
                                     </select>
+                                    {errors.category && <span  className='alert-color' ><i class="fa fa-warning"></i>  {errors.category}</span>}
                                 </div>
                                 <label for="language" class="label-style mb-0">Prefered Voice Communication Language</label>
                                 <div>
@@ -81,6 +119,7 @@ function Createquery() {
                                         <option value="Hindi" index="1" label="Hindi"></option>
                                         <option value="Tamil" index="2" label="Tamil"></option>
                                     </select>
+                                    {errors.prefferedLanguage && <span  className='alert-color' ><i class="fa fa-warning"></i>  {errors.prefferedLanguage}</span>}
                                 </div>
                             </div>
                             <div class="horizontal__rule">
@@ -90,9 +129,11 @@ function Createquery() {
                                 <label for="title" class="label-style mb-0">Query Title</label>
                                 <div>
                                     <input class="formInputs" name="title" ref={titleRef} placeholder="Enter the query title" type="text" ></input>
+                                    {errors.queryTitle && <span  className='alert-color' ><i class="fa fa-warning"></i>  {errors.queryTitle}</span>}
                                 </div>
                                 <label for="description" class="label-style mb-0">Query Description</label>
                                 <textarea class="formInputs" rows="5" name="description" ref={descriptionRef} type="text" placeholder="Enter the Description"></textarea>
+                                {errors.queryDescription && <span  className='alert-color' ><i class="fa fa-warning"></i>  {errors.queryDescription}</span>}
                             </div>
                             <div class="horizontal__rule"></div>
                             <div class="containerLabel">Your available Time ? ( Ours : 9:00 AM - 7:00 PM )</div>
