@@ -2,12 +2,16 @@ import React, {useState, useEffect} from 'react'
 import './classField.css';
 import { fetchData } from '../../../api/api'
 import withAuthCheck from '../../Auth/withAuthCheck';
+import BasicExample from '../accordion/accordion'
 
 
 function ClassField() {
 
   const [data, setData] = useState(null);
   const [additionalSession, setadditionalSession] = useState(null);
+  const [accordionContent, setaccordionContent] = useState(null);
+  const [sessionDay, setsessionDay] = useState(null);
+  const [sessionName, setsessionName] = useState(null);
 
   const buttonStyle = data?.sessionVideoUrl ? { width: 'max-content' } : { display: 'none' };
 
@@ -17,8 +21,19 @@ function ClassField() {
       const result = await fetchData(`/dashboard/${sessionDay}`);
       if(result.code == 200){
         setData(result.data);
+        setsessionDay(result.data.sessionDay)
+        setsessionName(result.data.sessionName)
+        if(result.data.activity){
+        if(result.data.backEnd && result.data.frontEnd){
+          setaccordionContent("full");
+        }else if(!result.data.backEnd && result.data.frontEnd){
+          setaccordionContent("frontend");
+        }else{
+          setaccordionContent("backend");
+        }
+        // setaccordionContent()
       }
-
+    }
     } catch (error) {
       // Handle error if needed
     }
@@ -49,6 +64,8 @@ function ClassField() {
     };
   }, []); 
 
+  let payload = {accordionContent: accordionContent, sessionDay: sessionDay, sessionName: sessionName }
+
   return (
     <section className="Dashboard-section">
       <div className="container-fluid">
@@ -72,6 +89,8 @@ function ClassField() {
                 <span className="second-sub-content">No preread availabe</span>
               </div>
             </div>
+            {data?.activity ? <BasicExample content={payload} /> : ''}
+            
           </div>
           <div className="col-4">
             <div className="roadmap mb-4">
@@ -86,7 +105,7 @@ function ClassField() {
                       <div class="straight-line" style={{ "pointer-events": 'none' }}></div>
                     </div>
                     <div class="iconNumber RINotCompleted">
-                      <h6>2</h6>
+                      <h6 onClick={handleClick} >2</h6>
                       <div class="straight-line" style={{ "pointer-events": 'none' }}></div>
                     </div>
                     <div class="iconNumber RINotCompleted">

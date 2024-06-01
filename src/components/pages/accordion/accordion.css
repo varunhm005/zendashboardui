@@ -1,0 +1,71 @@
+.tagsList {
+    display: flex;
+    flex-direction: row;
+    grid-gap: 12px;
+    gap: 12px;
+    align-items: center;
+}
+
+.tagTitle {
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.tagItem {
+    border: 2px solid #231f20;
+    padding: 0 12px;
+    border-radius: 80px;
+    color: #fff;
+    background-color: #68baae;
+    width: -webkit-max-content;
+    width: max-content;
+    font-size: 1rem;
+}
+
+.activity {
+    width: 107px;
+    height: 32px;
+    left: 92px;
+    top: 448px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    color: #4b0dba;
+}
+
+.task-area {
+    border: 1px solid #ffd3a2;
+    border-radius: 8px;
+}
+
+.assessment-area, .task-area {
+    margin-top: 10px;
+    width: 100%;
+    height: -webkit-max-content;
+    height: max-content;
+    left: 116px;
+    top: 604px;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+}
+
+.submission {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-gap: .5rem;
+    gap: .5rem;
+    padding: 24px 48px;
+}
+
+.formInputs {
+    font-size: 1rem;
+    padding: 12px 16px;
+    display: block;
+    border: 1px solid #7e8e9f;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
