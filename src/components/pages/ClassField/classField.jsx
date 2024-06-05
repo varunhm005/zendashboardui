@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import './classField.css';
 import { fetchData } from '../../../api/api'
 import withAuthCheck from '../../Auth/withAuthCheck';
@@ -12,28 +12,50 @@ function ClassField() {
   const [accordionContent, setaccordionContent] = useState(null);
   const [sessionDay, setsessionDay] = useState(null);
   const [sessionName, setsessionName] = useState(null);
+  const [taskSubmitted, settaskSubmitted] = useState(false);
+  const [urlDetails, setUrlDetails] = useState([]);
 
   const buttonStyle = data?.sessionVideoUrl ? { width: 'max-content' } : { display: 'none' };
 
   const handleClick = async (e) => {
     try {
-       let sessionDay = e.target.textContent
+      let sessionDay = e.target.textContent
       const result = await fetchData(`/dashboard/${sessionDay}`);
-      if(result.code == 200){
+      if (result.code == 200) {
         setData(result.data);
         setsessionDay(result.data.sessionDay)
         setsessionName(result.data.sessionName)
-        if(result.data.activity){
-        if(result.data.backEnd && result.data.frontEnd){
-          setaccordionContent("full");
-        }else if(!result.data.backEnd && result.data.frontEnd){
-          setaccordionContent("frontend");
-        }else{
-          setaccordionContent("backend");
+
+        let taskSubmittedData = result.data?.taskSubmitted ? result.data.taskSubmitted : false
+        settaskSubmitted(taskSubmittedData)
+
+        if (result.data?.tasks.length > 0) {
+          let tasks = result.data.tasks[0]
+
+          let urlData = {}
+
+
+          urlData.frontendSourceCode = tasks.frontendSourceCode ? tasks.frontendSourceCode : ""
+          urlData.frontendDeployedUrl = tasks.frontendDeployedUrl ? tasks.frontendDeployedUrl : ""
+          urlData.backendSourceCode = tasks.backendSourceCode ? tasks.backendSourceCode : ""
+          urlData.backendDeployedUrl = tasks.backendDeployedUrl ? tasks.backendDeployedUrl : ""
+          urlData.studentComments = tasks.studentComments ? tasks.studentComments : ""
+
+
+
+          setUrlDetails(urlData)
         }
-        // setaccordionContent()
+        if (result.data.activity) {
+          if (result.data.backEnd && result.data.frontEnd) {
+            setaccordionContent("full");
+          } else if (!result.data.backEnd && result.data.frontEnd) {
+            setaccordionContent("frontend");
+          } else {
+            setaccordionContent("backend");
+          }
+          // setaccordionContent()
+        }
       }
-    }
     } catch (error) {
       // Handle error if needed
     }
@@ -42,9 +64,9 @@ function ClassField() {
   const getAdditionalSeesion = async () => {
     try {
       const result = await fetchData('/additionals');
-      if(result.code === 200){
+      if (result.code === 200) {
         setadditionalSession(result.data);
-        }
+      }
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -62,9 +84,9 @@ function ClassField() {
     return () => {
       // You can do any clean-up here if necessary
     };
-  }, []); 
+  }, []);
 
-  let payload = {accordionContent: accordionContent, sessionDay: sessionDay, sessionName: sessionName }
+  let payload = { accordionContent: accordionContent, sessionDay: sessionDay, sessionName: sessionName, taskSubmitted: taskSubmitted, urlDetails: urlDetails }
 
   return (
     <section className="Dashboard-section">
@@ -90,7 +112,7 @@ function ClassField() {
               </div>
             </div>
             {data?.activity ? <BasicExample content={payload} /> : ''}
-            
+
           </div>
           <div className="col-4">
             <div className="roadmap mb-4">
@@ -253,18 +275,18 @@ function ClassField() {
                 </div>
                 <div className="card-body">
                   <div className="addSession-Head">
-                  { additionalSession ?(
-                    additionalSession.map((item, index) => (
-                    <div className="addSession">
-                      <h5 style={{ "font-weight": '450' }}>{item.additionalsName}</h5>
-                      <p style={{ "font-weight": '200', "margin": '0px' }}>{item.date} - {item.day} - {item.time}</p>
-                    </div>
+                    {additionalSession ? (
+                      additionalSession.map((item, index) => (
+                        <div className="addSession">
+                          <h5 style={{ "font-weight": '450' }}>{item.additionalsName}</h5>
+                          <p style={{ "font-weight": '200', "margin": '0px' }}>{item.date} - {item.day} - {item.time}</p>
+                        </div>
 
-))
-) :(
-    <tr>Loading</tr>
-)
-}
+                      ))
+                    ) : (
+                      <tr>Loading</tr>
+                    )
+                    }
 
                   </div>
 

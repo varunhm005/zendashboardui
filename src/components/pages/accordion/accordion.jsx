@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Accordion from 'react-bootstrap/Accordion';
 import './accordion.css'
 import { postData } from '../../../api/api'
@@ -9,14 +9,30 @@ function BasicExample({ content }) {
 
   moment.tz.setDefault('Asia/Kolkata');
 
-  const { accordionContent, sessionDay, sessionName } = content;
+  const { accordionContent, sessionDay, sessionName, taskSubmitted, urlDetails } = content;
+  const [taskSubmittedData, settaskSubmittedData] = useState(taskSubmitted);
+
 
   const frontendSourceRef = useRef(null);
   const frontendDeployedRef = useRef(null);
   const backendSourceRef = useRef(null)
   const backendDeployedRef = useRef(null);
   const studentCommentRef = useRef(null)
-  
+
+  useEffect(() => {
+    if ((accordionContent === 'frontend' || accordionContent === 'full') && taskSubmitted) {
+      frontendSourceRef.current.value = urlDetails.frontendSourceCode;
+      frontendDeployedRef.current.value = urlDetails.frontendDeployedUrl;
+      studentCommentRef.current.value = urlDetails.studentComments;
+    }
+    if ((accordionContent === 'backend' || accordionContent === 'full') && taskSubmitted) {
+      backendSourceRef.current.value = urlDetails.backendSourceCode;
+      backendDeployedRef.current.value = urlDetails.backendDeployedUrl;
+      studentCommentRef.current.value = urlDetails.studentComments;
+
+    }
+  })
+
 
   const [errors, setErrors] = useState({});
 
@@ -28,12 +44,10 @@ function BasicExample({ content }) {
     const backendDeployedUrl = backendDeployedRef?.current?.value ? backendDeployedRef.current.value : "";
     const studentComments = studentCommentRef?.current?.value ? studentCommentRef.current.value : "";
 
-    // Handle form submission logic here, such as sending the data to a server
-
     const validate = () => {
       const newErrors = {};
 
-      if (accordionContent === 'frontend' || accordionContent === 'full' ) {
+      if (accordionContent === 'frontend' || accordionContent === 'full') {
         if (!frontendSourceCode.trim()) {
           newErrors.frontendSource = 'Field cannot be empty';
         }
@@ -43,15 +57,15 @@ function BasicExample({ content }) {
         }
       }
 
-      if (accordionContent === 'backend' || accordionContent === 'full' ) {
-      if (!backendSourceCode.trim()) {
-        newErrors.backendSourceCode = 'Field cannot be empty';
-      }
+      if (accordionContent === 'backend' || accordionContent === 'full') {
+        if (!backendSourceCode.trim()) {
+          newErrors.backendSourceCode = 'Field cannot be empty';
+        }
 
-      if (!backendDeployedUrl.trim()) {
-        newErrors.backendDeployedUrl = 'Field cannot be empty';
+        if (!backendDeployedUrl.trim()) {
+          newErrors.backendDeployedUrl = 'Field cannot be empty';
+        }
       }
-    }
       setErrors(newErrors);
 
       return Object.keys(newErrors).length === 0;
@@ -62,32 +76,31 @@ function BasicExample({ content }) {
     if (validate()) {
 
       let payload = {
-        frontendSourceCode, frontendDeployedUrl, backendSourceCode, backendDeployedUrl, studentComments, sessionDay, submittedDate, sessionName
+        frontendSourceCode, frontendDeployedUrl, backendSourceCode, backendDeployedUrl, studentComments, sessionDay, submittedDate, taskName: sessionName
       }
 
-      console.log("payload",payload)
-
-      // const response = await postData('/query', JSON.stringify(payload), {
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //   });    
-      //   if (response.code === 200) {
-      //       alert(response.message)
-      //   } else {
-      //     // Handle login error
-      //     alert('Failed while creating query');
-      //   }
-
-      // You can also reset the form fields here if needed
-      if (accordionContent === 'frontend' || accordionContent === 'full' ) {
-      frontendSourceRef.current.value = '';
-      frontendDeployedRef.current.value = '';
+      const response = await postData('/task', JSON.stringify(payload), {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.code === 200) {
+        alert(response.message)
+        settaskSubmittedData(true)
+      } else {
+        alert('Failed while creating query');
       }
-      if (accordionContent === 'backend' || accordionContent === 'full' ) {
-      backendSourceRef.current.value = '';
-      backendDeployedRef.current.value = '';
-      studentCommentRef.current.value = '';
+
+      if ((accordionContent === 'frontend' || accordionContent === 'full') && taskSubmitted) {
+        frontendSourceRef.current.value = urlDetails.frontendSourceCode;
+        frontendDeployedRef.current.value = urlDetails.frontendDeployedUrl;
+        studentCommentRef.current.value = urlDetails.studentComments;
+      }
+
+      if ((accordionContent === 'backend' || accordionContent === 'full') && taskSubmitted) {
+        backendSourceRef.current.value = urlDetails.backendSourceCode;
+        backendDeployedRef.current.value = urlDetails.backendDeployedUrl;
+        studentCommentRef.current.value = urlDetails.studentComments;
       }
 
     } else {
@@ -164,7 +177,7 @@ function BasicExample({ content }) {
                     <div>
                       <input class="formInputs" name="comments" placeholder="leave your comments here" ref={studentCommentRef}></input>
                     </div>
-                    <button class="btn btn-primary" type="submit" style={{ 'width': "10%" }} >Submit</button>
+                    {taskSubmittedData == false ? <button class="btn btn-primary" type="submit" style={{ 'width': "10%" }} >Submit</button> : ''}
                   </div>
                 </div>
                 <div class="d-flex justify-content-end">
