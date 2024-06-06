@@ -9,7 +9,7 @@ function BasicExample({ content }) {
 
   moment.tz.setDefault('Asia/Kolkata');
 
-  const { accordionContent, sessionDay, sessionName, taskSubmitted, urlDetails } = content;
+  const { accordionContent, sessionDay, sessionName, taskSubmitted, urlDetails, taskName } = content;
   const [taskSubmittedData, settaskSubmittedData] = useState(taskSubmitted);
 
 
@@ -20,16 +20,28 @@ function BasicExample({ content }) {
   const studentCommentRef = useRef(null)
 
   useEffect(() => {
+    if(taskSubmitted){
+      settaskSubmittedData(true)
+    }else{
+      settaskSubmittedData(false)
+    }
     if ((accordionContent === 'frontend' || accordionContent === 'full') && taskSubmitted) {
       frontendSourceRef.current.value = urlDetails.frontendSourceCode;
       frontendDeployedRef.current.value = urlDetails.frontendDeployedUrl;
       studentCommentRef.current.value = urlDetails.studentComments;
+    }else if((accordionContent === 'frontend' || accordionContent === 'full') && !taskSubmitted){
+      frontendSourceRef.current.value = "";
+      frontendDeployedRef.current.value = "";
+      studentCommentRef.current.value = "";
     }
     if ((accordionContent === 'backend' || accordionContent === 'full') && taskSubmitted) {
       backendSourceRef.current.value = urlDetails.backendSourceCode;
       backendDeployedRef.current.value = urlDetails.backendDeployedUrl;
       studentCommentRef.current.value = urlDetails.studentComments;
-
+    }else if((accordionContent === 'backend' || accordionContent === 'full') && !taskSubmitted){
+      backendSourceRef.current.value = "";
+      backendDeployedRef.current.value = "";
+      studentCommentRef.current.value = "";
     }
   })
 
@@ -85,8 +97,8 @@ function BasicExample({ content }) {
         },
       });
       if (response.code === 200) {
-        alert(response.message)
         settaskSubmittedData(true)
+        alert(response.message)
       } else {
         alert('Failed while creating query');
       }
@@ -162,7 +174,7 @@ function BasicExample({ content }) {
       <Accordion>
         {/* <div class="activity ml-1 mt-3 mb-2">Activities</div> */}
         <Accordion.Item eventKey="0">
-          <Accordion.Header>Accordion Item #1</Accordion.Header>
+          <Accordion.Header>{taskName}</Accordion.Header>
           <Accordion.Body>
             <div class="tagsList"><div class="tagTitle">Tags:</div><div class="tagItem">HTML &amp; CSS</div></div>
             <div class="p-0">

@@ -64,7 +64,7 @@ function Taskdetail({ hideDetailComponent }) {
                                     <div class="right-content">
                                         <span class="submission mb-2">submitted on {item.submittedDate}</span>
                                         <div class="task-details">
-                                            <span class="count mx-1 px-3">{item.taskMark}</span>
+                                        {data[index].taskMark ? <span class="count mx-1 px-3">{item.taskMark}</span> : <span class="count mx-1 px-3">Yet to be graded</span> }
                                             <span class="task px-2">Task</span>
                                         </div>
                                     </div>
@@ -88,7 +88,7 @@ function Taskdetail({ hideDetailComponent }) {
                             </div>
                             <div>
                                 <div class="ml-3 mr-1 d-flex align-self-end justify-content-end">
-                                    <div class="marktag mx-1 px-3 rounded">{data[index].taskMark}</div>
+                                {data[index].taskMark ? <div class="marktag mx-1 px-3 rounded">{data[index].taskMark}</div>: <div class="marktag mx-1 px-3 rounded">Yet to be graded</div>}
                                     <div class="tasktag px-2 rounded">Task</div>
                                 </div>
                                 <div class="mx-1 secondaryGreyTextColor">submitted on {data[index].submittedDate}</div></div></div>
@@ -99,16 +99,15 @@ function Taskdetail({ hideDetailComponent }) {
                             <p>{data[index].studentComments}</p>
                         </div><div class="mx-2">Answers</div>
                         <div class="mx-2 mt-0 mb-3 py-3 answerBorder">
-                            <div class="mx-2">Front-end Source code : <a href={data[index].frontendSourceCode} class="" target="_blank" rel="noreferrer">{data[index].frontendSourceCode}</a>
-                            </div>
-                            <div class="mx-2">Front-end Deployed URL : <a href={data[index].frontendDeployedUrl} class="" target="_blank" rel="noreferrer">{data[index].frontendDeployedUrl}</a>
-                            </div>
+                            {data[index].frontendSourceCode ?<div class="mx-2">Front-end Source code : <a href={data[index].frontendSourceCode} class="" target="_blank" rel="noreferrer">{data[index].frontendSourceCode}</a></div> : undefined}
+                            {data[index].frontendDeployedUrl ?<div class="mx-2">Front-end Deployed URL : <a href={data[index].frontendDeployedUrl} class="" target="_blank" rel="noreferrer">{data[index].frontendDeployedUrl}</a></div>: undefined}
+                            {data[index].backendSourceCode ?<div class="mx-2">Back-end Source code : <a href={data[index].backendSourceCode} class="" target="_blank" rel="noreferrer">{data[index].backendSourceCode}</a></div> : undefined}
+                            {data[index].backendDeployedUrl ?<div class="mx-2">Back-end Deployed URL : <a href={data[index].backendDeployedUrl} class="" target="_blank" rel="noreferrer">{data[index].backendDeployedUrl}</a></div>: undefined}
                         </div>
                         <div class="col-12 marksContainer">
                             <div class="row d-flex align-itmes-center justify-content-between mx-1">
                                 <div class="col-12"><div class="mx-2 mt-3">Comments:</div>
-                                    <div class="mx-2 mt-0 mb-3 py-3 px-2 rounded commentsstudent">Good work
-                                        the Restaurant  Landing page is same as needed</div>
+                                    {data[index]?.mentorComment ? <div class="mx-2 mt-0 mb-3 py-3 px-2 rounded commentsstudent">Good work the Restaurant  Landing page is same as needed</div> : undefined}
                                 </div>
                             </div>
                         </div>

@@ -56,7 +56,7 @@ function Tasks({ toggleComponent }) {
                                     <div class="right-content">
                                         <span class="submission mb-2">submitted on {item.submittedDate}</span>
                                         <div class="task-details">
-                                            <span class="count mx-1 px-3">{item.taskMark}</span>
+                                        {item.graded ? <span class="count mx-1 px-3">{item.taskMark}</span> : <span class="count mx-1 px-3">Yet to be graded</span>} 
                                             <span class="task px-2">Task</span>
                                         </div>
                                     </div>

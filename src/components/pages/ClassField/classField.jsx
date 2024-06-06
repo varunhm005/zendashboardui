@@ -14,6 +14,7 @@ function ClassField() {
   const [sessionName, setsessionName] = useState(null);
   const [taskSubmitted, settaskSubmitted] = useState(false);
   const [urlDetails, setUrlDetails] = useState([]);
+  const [taskName, settaskName] = useState(null);
 
   const buttonStyle = data?.sessionVideoUrl ? { width: 'max-content' } : { display: 'none' };
 
@@ -25,6 +26,7 @@ function ClassField() {
         setData(result.data);
         setsessionDay(result.data.sessionDay)
         setsessionName(result.data.sessionName)
+        settaskName(result.data.taskName)
 
         let taskSubmittedData = result.data?.taskSubmitted ? result.data.taskSubmitted : false
         settaskSubmitted(taskSubmittedData)
@@ -86,7 +88,7 @@ function ClassField() {
     };
   }, []);
 
-  let payload = { accordionContent: accordionContent, sessionDay: sessionDay, sessionName: sessionName, taskSubmitted: taskSubmitted, urlDetails: urlDetails }
+  let payload = { accordionContent: accordionContent, sessionDay: sessionDay, sessionName: sessionName, taskSubmitted: taskSubmitted, urlDetails: urlDetails, taskName: taskName }
 
   return (
     <section className="Dashboard-section">
@@ -126,12 +128,12 @@ function ClassField() {
                       <h6 onClick={handleClick} >1</h6>
                       <div class="straight-line" style={{ "pointer-events": 'none' }}></div>
                     </div>
-                    <div class="iconNumber RINotCompleted">
+                    <div class="iconNumber RICompleted">
                       <h6 onClick={handleClick} >2</h6>
                       <div class="straight-line" style={{ "pointer-events": 'none' }}></div>
                     </div>
-                    <div class="iconNumber RINotCompleted">
-                      <h6>3</h6>
+                    <div class="iconNumber RICompleted">
+                      <h6 onClick={handleClick}  >3</h6>
                       <div class="straight-line" style={{ "pointer-events": 'none' }}></div>
                     </div>
                     <div class="iconNumber RINotCompleted">
